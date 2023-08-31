@@ -32,19 +32,20 @@ class _MenuStructureScreenState extends State<MenuStructureScreen> {
   @override
   Widget build(BuildContext context) {
     return StreamBuilder<int>(
-        stream: menuStructureBloc.currentIndex.stream,
-        builder: (context, snapshot) {
-          return AnimatedBottomNavigationBar(
-            leftCornerRadius: 32,
-            rightCornerRadius: 32,
-            backgroundColor: mainObscureTabNavigation,
-            icons: pages.map((e) => e.icon).toList(),
-            gapLocation: GapLocation.none,
-            activeIndex: snapshot.data ?? 0,
-            activeColor: mainYellow,
-            inactiveColor: mainWhite,
-            onTap: (idx) => menuStructureBloc.currentIndex.add(0),
-          );
-        });
+      stream: menuStructureBloc.currentIndex.stream,
+      builder: (context, snapshot) {
+        return AnimatedBottomNavigationBar(
+          leftCornerRadius: 32,
+          rightCornerRadius: 32,
+          backgroundColor: mainObscureTabNavigation,
+          icons: pages.map((e) => e.icon).toList(),
+          gapLocation: GapLocation.none,
+          activeIndex: snapshot.data ?? 0,
+          activeColor: mainYellow,
+          inactiveColor: mainWhite,
+          onTap: (idx) => menuStructureBloc.currentIndex.add(idx),
+        );
+      },
+    );
   }
 }

@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:practicas_flutter/core/inection/injection_container.dart';
 import 'package:practicas_flutter/core/routes/app_page_route.dart';
 import 'package:practicas_flutter/core/routes/app_routes.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
-void main() {
+Future<void> main() async {
+  await injectDependencies();
   runApp(const MyApp());
 }
 

@@ -1,11 +1,21 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:practicas_flutter/core/routes/app_routes.dart';
+import 'package:practicas_flutter/features/home/presentation/bloc/home_bloc.dart';
+import 'package:practicas_flutter/features/home/presentation/screen/home_screen.dart';
+import 'package:practicas_flutter/features/menu_structure/presentation/bloc/menu_structure_bloc.dart';
 
 class AppPageRouter {
   static Widget buildScreenPage(String? route) {
     switch (route) {
       case AppRoutes.home:
-        return const SizedBox();
+        return MultiBlocProvider(
+          providers: [
+            BlocProvider<MenuStructureBloc>(create: (_) => MenuStructureBloc()),
+            BlocProvider<HomeBloc>(create: (_) => HomeBloc())
+          ],
+          child: const HomeScreen(),
+        );
       default:
         return const SizedBox();
     }

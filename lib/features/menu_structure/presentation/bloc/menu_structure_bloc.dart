@@ -5,5 +5,5 @@ part 'menu_structure_state.dart';
 
 class MenuStructureBloc extends Bloc<MenuStructurEvent, MenuStructureState> {
   MenuStructureBloc() : super(InitMenuStructureState());
-  final BehaviorSubject<> currentIndex = BehaviorSubject<int>();
+  final BehaviorSubject<int> currentIndex = BehaviorSubject<int>();
 }
