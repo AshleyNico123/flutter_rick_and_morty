@@ -1,4 +1,5 @@
 import 'package:practicas_flutter/core/entities/character_entity.dart';
+import 'package:practicas_flutter/core/utils/recognized_status.dart';
 
 class CharacterModel extends CharacterEntity {
   const CharacterModel({
@@ -19,14 +20,14 @@ class CharacterModel extends CharacterEntity {
   factory CharacterModel.fromJson(Map<String, dynamic> json) => CharacterModel(
         id: json['id'] ?? 0,
         name: json['name'] ?? '',
-        status: json['status'] ?? '',
+        status: deliveryStatus(json['status'] ?? 'unknown'),
         species: json['species'] ?? '',
         type: json['type'] ?? '',
         gender: json['gender'] ?? '',
-        origin: LocationCharacterModel.fromJso(json['origin']),
-        location: LocationCharacterModel.fromJso(json['location']),
+        origin: LocationCharacterModel.fromJso(json['origin'] ?? {}),
+        location: LocationCharacterModel.fromJso(json['location'] ?? {}),
         image: json['image'] ?? '',
-        episode: json['episode'] ?? '',
+        episode: <String>[...(json['episode'] ?? [])],
         url: json['url'] ?? '',
         created: json['created'] ?? '',
       );

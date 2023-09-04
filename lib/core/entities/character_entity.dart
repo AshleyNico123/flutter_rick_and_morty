@@ -18,7 +18,7 @@ class CharacterEntity extends Equatable {
 
   final int id;
   final String name;
-  final String status;
+  final StatusCharacter status;
   final String species;
   final String type;
   final String gender;
@@ -32,7 +32,7 @@ class CharacterEntity extends Equatable {
   const CharacterEntity.empty()
       : id = 0,
         name = '',
-        status = '',
+        status = StatusCharacter.unknown,
         species = '',
         type = '',
         gender = '',
@@ -46,7 +46,7 @@ class CharacterEntity extends Equatable {
   CharacterEntity copyWith({
     int? id,
     String? name,
-    String? status,
+    StatusCharacter? status,
     String? species,
     String? type,
     String? gender,
@@ -104,4 +104,21 @@ class LocationCharacterEntity extends Equatable {
 
   @override
   List<Object?> get props => [name, url];
+}
+
+enum StatusCharacter { alive, dead, unknown }
+
+extension StatusCharacterExtension on StatusCharacter {
+  String get label {
+    switch (this) {
+      case StatusCharacter.alive:
+        return 'Alive';
+      case StatusCharacter.dead:
+        return 'Dead';
+      case StatusCharacter.unknown:
+      return 'Unknown';
+      default:
+        return 'Unknown';
+    }
+  }
 }

@@ -3,6 +3,9 @@ import 'dart:developer';
 
 import 'package:http/http.dart' as http;
 import 'package:practicas_flutter/core/network/exceptions.dart';
+import 'package:practicas_flutter/core/network/server_api_client_constant.dart';
+
+const protocol = 'https';
 
 class ServerApiClient {
   Future<http.Response> get({
@@ -11,7 +14,9 @@ class ServerApiClient {
     Map<String, String>? headers,
   }) async {
     final Uri urlPathComplete = Uri(
+      host: ServerApiClientConstant.baseUrl,
       path: url,
+      scheme: protocol,
       queryParameters: queryParams,
     );
     http.Response response;
