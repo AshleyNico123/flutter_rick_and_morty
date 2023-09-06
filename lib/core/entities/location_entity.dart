@@ -1,7 +1,7 @@
 import 'package:equatable/equatable.dart';
 
-class CharacterEntity extends Equatable {
-  const CharacterEntity({
+class LocationEntity extends Equatable {
+  const LocationEntity({
     required this.id,
     required this.name,
     required this.status,
@@ -16,7 +16,7 @@ class CharacterEntity extends Equatable {
     required this.created,
   });
 
-  final int id;
+  final int id;              
   final String name;
   final StatusCharacter status;
   final String species;
@@ -29,7 +29,7 @@ class CharacterEntity extends Equatable {
   final String url;
   final String created;
 
-  const CharacterEntity.empty()
+  const LocationEntity.empty()
       : id = 0,
         name = '',
         status = StatusCharacter.unknown,
@@ -43,7 +43,7 @@ class CharacterEntity extends Equatable {
         url = '',
         created = '';
 
-  CharacterEntity copyWith({
+  LocationEntity copyWith({
     int? id,
     String? name,
     StatusCharacter? status,
@@ -57,7 +57,7 @@ class CharacterEntity extends Equatable {
     String? url,
     String? created,
   }) =>
-      CharacterEntity(
+      LocationEntity(
         id: id ?? this.id,
         name: name ?? this.name,
         status: status ?? this.status,

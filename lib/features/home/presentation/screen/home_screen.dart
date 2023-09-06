@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:practicas_flutter/core/theme/color.dart';
+import 'package:practicas_flutter/features/home/presentation/bloc/home_bloc.dart';
 import 'package:practicas_flutter/features/menu_structure/presentation/bloc/menu_structure_bloc.dart';
 import 'package:practicas_flutter/features/menu_structure/presentation/screens/menu_structure_screen.dart';
 import 'package:practicas_flutter/features/menu_structure/presentation/widgets/menu_structure_pages.dart';
@@ -14,11 +15,14 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   late final MenuStructureBloc menuStructureBloc;
+  late final HomeBloc homeBloc;
   final pages = MenuStructurePages.pages;
 
   @override
   void initState() {
     menuStructureBloc = context.read<MenuStructureBloc>();
+    homeBloc = context.read<HomeBloc>();
+    homeBloc.add(GetAllCharacters(page: 1));
     super.initState();
   }
 
